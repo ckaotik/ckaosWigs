@@ -1,0 +1,12 @@
+## Interface: 60000
+## Version: 6.0v1
+## Author: ckaotik
+
+## Title: ckaosWigs
+## Notes: Customization for BigWigs
+## SavedVariables: ckaosCrittersDB
+
+## LoadOnDemand: 1
+## LoadWith: BigWigs_Plugins
+
+ckaosWigs.lua
