@@ -4,7 +4,6 @@
 
 ## Title: ckaosWigs
 ## Notes: Customization for BigWigs
-## SavedVariables: ckaosCrittersDB
 
 ## LoadOnDemand: 1
 ## LoadWith: BigWigs_Plugins
