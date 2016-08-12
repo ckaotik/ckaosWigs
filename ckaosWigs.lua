@@ -6,14 +6,14 @@ _G[addonName] = addon
 local LSM = LibStub('LibSharedMedia-3.0', true)
 
 -- Fancy BigWigs pull timer, like those in challenge modes
-local L = LibStub('AceLocale-3.0'):GetLocale('Big Wigs: Plugins')
+local L = LibStub('AceLocale-3.0'):GetLocale('BigWigs: Plugins')
 BigWigsLoader:RegisterMessage('BigWigs_StartBar', function(_, plugin, _, text, timeLeft)
-	if text == ('Pull' or L['Pull']) then
+	if text == ('Pull' or L['pull']) then
 		TimerTracker_OnEvent(TimerTracker, 'START_TIMER', TIMER_TYPE_CHALLENGE_MODE, timeLeft, timeLeft)
 	end
 end)
 BigWigsLoader:RegisterMessage('BigWigs_StopBar', function(event, plugin, text)
-	if text == ('Pull' or L['Pull']) then
+	if text == ('Pull' or L['pull']) then
 		TimerTracker_OnEvent(TimerTracker, 'PLAYER_ENTERING_WORLD')
 	end
 end)
