@@ -2,20 +2,15 @@ local addonName, addon, _ = ...
 addon = CreateFrame('Frame')
 _G[addonName] = addon
 
--- GLOBALS: LibStub, BigWigs, BigWigsLoader, C_Timer, TimerTracker, TimerTracker_OnEvent, TIMER_TYPE_CHALLENGE_MODE
+-- GLOBALS: LibStub, BigWigs, BigWigsLoader, BigWigsAPI, C_Timer, TimerTracker, TimerTracker_OnEvent, TIMER_TYPE_CHALLENGE_MODE
 local LSM = LibStub('LibSharedMedia-3.0', true)
 
 -- Fancy BigWigs pull timer, like those in challenge modes
-local L = LibStub('AceLocale-3.0'):GetLocale('BigWigs: Plugins')
-BigWigsLoader:RegisterMessage('BigWigs_StartBar', function(_, plugin, _, text, timeLeft)
-	if text == ('Pull' or L['pull']) then
-		TimerTracker_OnEvent(TimerTracker, 'START_TIMER', TIMER_TYPE_CHALLENGE_MODE, timeLeft, timeLeft)
-	end
+BigWigsLoader.RegisterMessage(addon, 'BigWigs_StartPull', function(event, pluginName, seconds, caster, isDBM)
+	TimerTracker_OnEvent(TimerTracker, 'START_TIMER', TIMER_TYPE_CHALLENGE_MODE, seconds, seconds)
 end)
-BigWigsLoader:RegisterMessage('BigWigs_StopBar', function(event, plugin, text)
-	if text == ('Pull' or L['pull']) then
-		TimerTracker_OnEvent(TimerTracker, 'PLAYER_ENTERING_WORLD')
-	end
+BigWigsLoader.RegisterMessage(addon, 'BigWigs_StopPull', function(event, pluginName, caster, isDBM)
+	TimerTracker_OnEvent(TimerTracker, 'PLAYER_ENTERING_WORLD')
 end)
 
 -- Custom BigWigs bar style
@@ -70,7 +65,7 @@ if bars then
 			end
 
 			local label = bar.candyBarLabel
-			label:SetJustifyH(conf.align)
+			label:SetJustifyH(conf.alignText)
 			label:ClearAllPoints()
 			label:SetPoint('BOTTOMLEFT', bar, 'TOPLEFT', 0, 2)
 			if conf.time then

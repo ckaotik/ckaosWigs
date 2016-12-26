@@ -1,5 +1,5 @@
-## Interface: 70000
-## Version: 7.0v1
+## Interface: 70100
+## Version: 7.1v1
 ## Author: ckaotik
 
 ## Title: ckaosWigs
